@@ -6,3 +6,5 @@ Thumbs.db
 .vercel
 .claude
 foto-cliente.jpg.bak
+
+.env*
