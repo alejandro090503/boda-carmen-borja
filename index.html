@@ -1850,6 +1850,24 @@ body.nv-on .nv{opacity:1;transform:none}
 .nm-foot{text-align:center;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
 /* el tocadiscos se sube para no chocar con la barra en móvil */
 @media (max-width:1099px){ .vinyl-btn{bottom:86px!important} }
+
+/* Lugar: una sola tarjeta centrada */
+#ubicacion .locs-grid{grid-template-columns:minmax(0,520px);justify-content:center}
+.loc-type{font-size:12px!important;letter-spacing:.3em!important;padding-left:.3em!important;font-weight:600!important;line-height:1.7}
+.loc-name{font-weight:500!important}
+.loc-nav-hint{font-family:var(--serif);font-style:italic;font-weight:600;font-size:16px;color:var(--ink-soft);margin-top:-4px}
+/* destellos que caen */
+.fall-layer{position:fixed;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.fall-spark{position:absolute;top:-30px;width:var(--sz);height:var(--sz);opacity:0;
+  background:var(--c);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+  filter:drop-shadow(0 0 4px var(--c));animation:sparkFall var(--d) linear var(--dl) infinite}
+@keyframes sparkFall{
+  0%{transform:translate3d(0,0,0) rotate(0deg) scale(.6);opacity:0}
+  10%{opacity:.9}
+  50%{transform:translate3d(var(--dx),55vh,0) rotate(180deg) scale(1);opacity:.85}
+  90%{opacity:.5}
+  100%{transform:translate3d(calc(var(--dx) * -.4),110vh,0) rotate(360deg) scale(.7);opacity:0}}
+@media (prefers-reduced-motion:reduce){.fall-layer{display:none}}
 </style>
 </head>
 <body>
@@ -1920,6 +1938,7 @@ body.nv-on .nv{opacity:1;transform:none}
   <p class="nm-foot">Sábado, 5 de diciembre de 2026 · Barranquilla</p>
 </div>
 
+<div class="fall-layer" id="fallLayer" aria-hidden="true"></div>
 <!-- PARTÍCULAS -->
 <div id="particles"></div>
 
@@ -2053,9 +2072,9 @@ body.nv-on .nv{opacity:1;transform:none}
   <section class="section-paper locs" id="ubicacion">
     <div class="container">
       <div style="text-align:center">
-        <div class="eyebrow">Acompáñanos</div>
+        <div class="eyebrow">Lugar</div>
         <h2>Ceremonia <em>&amp;</em> Recepción</h2>
-        <div class="locs-sub">dos momentos, un mismo lugar</div>
+        <div class="locs-sub">un mismo lugar</div>
       </div>
       <div class="locs-grid">
         <article class="loc-card" data-tilt>
@@ -2076,45 +2095,13 @@ body.nv-on .nv{opacity:1;transform:none}
               <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
             </g>
           </svg>
-          <div class="loc-type">Ceremonia cristiana</div>
-          <div class="loc-name">Crowne Plaza Barranquilla</div>
+          <div class="loc-type">Ceremonia cristiana y Recepción</div>
+          <div class="loc-name">Hotel Crowne Plaza Barranquilla</div>
           <div class="loc-time">5:00 pm</div>
           <div class="loc-addr">Torre Norte · Cra. 57 #99A-65, Riomar, Barranquilla</div>
           <div class="loc-nav">
             <span class="loc-nav-lbl">Cómo llegar</span>
-            <div class="loc-nav-links">
-              <a href="https://maps.app.goo.gl/wiVV4gcuzktEtuE7A?g_st=ic" target="_blank" rel="noopener">Google Maps</a>
-              <span aria-hidden="true">·</span>
-              <a href="https://maps.apple.com/?q=Crowne%20Plaza%20Barranquilla%2C%20Cra.%2057%20%2399A-65%2C%20Barranquilla" target="_blank" rel="noopener">Apple Maps</a>
-              <span aria-hidden="true">·</span>
-              <a href="https://waze.com/ul?q=Crowne%20Plaza%20Barranquilla%2C%20Cra.%2057%20%2399A-65%2C%20Barranquilla&amp;navigate=yes" target="_blank" rel="noopener">Waze</a>
-            </div>
-          </div>
-        </article>
-        <article class="loc-card" data-tilt>
-          <span class="washi washi--l"></span>
-          <span class="washi washi--r"></span>
-          <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-              <path d="M12 12 L17 17 M27 27 L32 32 M27 17 L32 12 M12 32 L17 27" opacity=".4"/>
-            </g>
-          </svg>
-          <svg class="rosette rosette--br" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-            </g>
-          </svg>
-          <div class="loc-type">Recepción</div>
-          <div class="loc-name">Crowne Plaza Barranquilla</div>
-          <div class="loc-time">6:30 pm</div>
-          <div class="loc-addr">Torre Norte · Cra. 57 #99A-65, Riomar, Barranquilla</div>
-          <div class="loc-nav">
-            <span class="loc-nav-lbl">Cómo llegar</span>
+            <span class="loc-nav-hint">Presiona aquí</span>
             <div class="loc-nav-links">
               <a href="https://maps.app.goo.gl/wiVV4gcuzktEtuE7A?g_st=ic" target="_blank" rel="noopener">Google Maps</a>
               <span aria-hidden="true">·</span>
@@ -2203,7 +2190,7 @@ body.nv-on .nv{opacity:1;transform:none}
         <div class="dc-divider" aria-hidden="true"></div>
 
         <div class="dc-fig">
-          <img src="dress-dama.png" alt="Vestido formal dama" class="dc-illustration" width="160" height="280" loading="lazy">
+          <img src="dress-dama.png?v=2" alt="Vestido largo dama" class="dc-illustration" width="280" height="426" loading="lazy">
           <div class="dc-fig-name">Dama</div>
           <div class="dc-fig-hint">Vestido largo<br>unicolor</div>
         </div>
@@ -2228,7 +2215,7 @@ body.nv-on .nv{opacity:1;transform:none}
   <section class="section-surface padrinos">
     <div class="container">
       <div class="eyebrow">Acompañados por</div>
-      <h2>Nuestros <em>Padrinos</em></h2>
+      <h2>Nuestra <em>corte</em> de honor</h2>
       <div class="padrinos-sub">con amor y bendición</div>
       <div class="padrinos-carousel">
         <button class="padrinos-arrow padrinos-arrow--prev" aria-label="Anterior">&#8249;</button>
@@ -2242,8 +2229,8 @@ body.nv-on .nv{opacity:1;transform:none}
             </div>
             <div class="padrino-slide padrino-slide-card">
               <div class="padrino-icon"><svg viewBox="0 0 64 64"><path d="M44 24c-6.6 0-10 8-12 8s-5.4-8-12-8a8 8 0 000 16c6.6 0 10-8 12-8s5.4 8 12 8a8 8 0 000-16Z"/></svg></div>
-              <div class="padrino-rol">Cortejo de honor</div>
-              <div class="padrino-names">Santiago Moron Mercado<br>Maria Fatima Patiño Toscano<br>Camila Toscano Castaño</div>
+              <div class="padrino-rol">Pajes</div>
+              <div class="padrino-names">Santiago Morón Mercado<br>María Fátima Patiño Toscano<br>Camila Toscano Castaño</div>
             </div>
           </div>
         </div>
@@ -2382,16 +2369,16 @@ body.nv-on .nv{opacity:1;transform:none}
     </div>
     <div class="c3d-scene" id="c3dScene">
       <div class="c3d-ring" id="c3dRing">
-        <div class="c3d-card"><img src="foto-cliente-t.jpg" data-full="foto-cliente.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-1-t.jpg" data-full="foto-1.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-8-t.jpg" data-full="foto-8.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-2-t.jpg" data-full="foto-2.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-9-t.jpg" data-full="foto-9.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-3-t.jpg" data-full="foto-3.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-10-t.jpg" data-full="foto-10.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-4-t.jpg" data-full="foto-4.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-5-t.jpg" data-full="foto-5.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
-        <div class="c3d-card"><img src="foto-6-t.jpg" data-full="foto-6.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-01-t.jpg" data-full="kj-01.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-02-t.jpg" data-full="kj-02.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-03-t.jpg" data-full="kj-03.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-04-t.jpg" data-full="kj-04.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-05-t.jpg" data-full="kj-05.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-06-t.jpg" data-full="kj-06.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-07-t.jpg" data-full="kj-07.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-08-t.jpg" data-full="kj-08.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-09-t.jpg" data-full="kj-09.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
+        <div class="c3d-card"><img src="kj-10-t.jpg" data-full="kj-10.jpg" alt="Karen y Juan" decoding="async" draggable="false"></div>
       </div>
     </div>
     <p class="c3d-hint">Desliza para girar</p>
@@ -3228,6 +3215,20 @@ gsap.fromTo('.dress-avoid',{opacity:0,y:24},{opacity:1,y:0,duration:1.1,ease:'po
     if(navigator.share){ navigator.share(data).catch(function(){}); }
     else if(navigator.clipboard){ navigator.clipboard.writeText(data.url).then(function(){ var b=document.getElementById('nvShare'); b.style.color='var(--gold)'; setTimeout(function(){ b.style.color=''; },1200); }); }
   });
+})();
+
+
+// ------ DESTELLOS QUE CAEN (azules y dorados, pocos) ------
+(function(){
+  var L=document.getElementById('fallLayer'); if(!L||prefersReduced) return;
+  var C=['#D4AF37','#fecb3e','#f5dc8a','#4A7BB7','#a7c6ff'];
+  var N=window.innerWidth<700?9:14;
+  for(var i=0;i<N;i++){
+    var e=document.createElement('span'); e.className='fall-spark';
+    var sz=8+Math.random()*9;
+    e.style.cssText='left:'+(Math.random()*100)+'%;--sz:'+sz.toFixed(1)+'px;--c:'+C[i%C.length]+';--d:'+(11+Math.random()*9).toFixed(1)+'s;--dl:-'+(Math.random()*18).toFixed(1)+'s;--dx:'+((Math.random()-.5)*80).toFixed(0)+'px';
+    L.appendChild(e);
+  }
 })();
 
 // ------ SOLO ADULTOS ------
