@@ -1773,7 +1773,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
 <!-- MUSIC -->
 <audio id="music" preload="none" loop>
-  <source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-carmen-borja/cancion.mp3" type="audio/mpeg">
+  <source src="https://bsjoelxktbvlavfoozhk.supabase.co/storage/v1/object/public/fotos-clientes/audio/boda-karen-y-juan/cancion.mp3" type="audio/mpeg">
 </audio>
 <button class="vinyl-btn" id="music-btn" type="button" aria-label="Reproducir música de la invitación">
   <div class="vinyl-tonearm">
@@ -3341,7 +3341,7 @@ function startParticles(){
 }
 
 // ------ MÚSICA — empieza en 0:17 al abrir el sobre ------
-const MUSIC_START_OFFSET = 17;
+const MUSIC_START_OFFSET = 0;
 const musicEl  = document.getElementById('music');
 const musicBtn = document.getElementById('music-btn');
 
@@ -3352,6 +3352,14 @@ function setMusicStart(){
 if(musicEl){
   musicEl.addEventListener('loadedmetadata', setMusicStart, {once:true});
   musicEl.addEventListener('play',  ()=> musicBtn && musicBtn.classList.add('is-playing'));
+  /* fade-in suave: la canción entra de a poco, no de golpe */
+  let fadedIn=false;
+  musicEl.addEventListener('playing',()=>{
+    if(fadedIn) return; fadedIn=true;
+    try{ musicEl.volume=0; }catch(e){}
+    const t0=performance.now(), D=4500, TARGET=.75;
+    (function step(){ const k=Math.min(1,(performance.now()-t0)/D); try{ musicEl.volume=TARGET*k*k; }catch(e){} if(k<1) setTimeout(step,60); })();
+  });
   musicEl.addEventListener('pause', ()=> musicBtn && musicBtn.classList.remove('is-playing'));
   musicEl.addEventListener('ended', ()=>{ setMusicStart(); musicEl.play().catch(()=>{}); });
 }
