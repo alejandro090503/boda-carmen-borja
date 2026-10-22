@@ -1742,6 +1742,114 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 .padres-rol::after{content:"";position:absolute;left:50%;bottom:0;width:24px;height:1px;margin-left:-12px;background:var(--gold)}
 .padres-names{display:flex;flex-direction:column;align-items:center;font-size:clamp(16px,4.3vw,22px)!important;font-weight:500;line-height:1.35!important;white-space:nowrap;color:var(--accent-deep)!important}
 .padres-amp{font-family:var(--display);font-style:italic;font-size:18px;color:var(--gold);margin:6px 0}
+
+/* ============ HOSPEDAJE — lista / mapa ============ */
+.hs .eyebrow{text-align:center}
+.hs h2{font-size:clamp(36px,5.5vw,60px);margin-bottom:18px}
+.hs-intro{font-family:var(--serif);font-size:18px;font-weight:500;line-height:1.6;color:var(--ink);max-width:460px;margin:0 auto}
+.hs-tabs-wrap{display:flex;justify-content:center;margin:34px 0 30px}
+.hs-tabs{position:relative;display:inline-flex;padding:5px;border-radius:999px;border:1px solid var(--hair-gold);background:rgba(255,255,255,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.hs-tab-bg{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:var(--accent);transition:transform .5s cubic-bezier(.22,1,.36,1);box-shadow:0 6px 16px -6px rgba(1,31,82,.5)}
+.hs-tabs.is-map .hs-tab-bg{transform:translateX(100%)}
+.hs-tab{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;min-width:118px;height:44px;padding:0 20px;border:0;background:none;border-radius:999px;cursor:pointer;
+  font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);transition:color .4s}
+.hs-tab svg{width:16px;height:16px}
+.hs-tab.is-on{color:#fff}
+.hs-list{list-style:none;display:grid;gap:16px;max-width:900px;margin:0 auto}
+@media (min-width:700px){.hs-list{grid-template-columns:1fr 1fr;gap:22px}}
+.hs-card{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:26px 24px;background:linear-gradient(180deg,#fffef6,var(--paper));border:1px solid var(--hair-gold);border-radius:22px;
+  box-shadow:0 14px 40px -26px rgba(1,31,82,.4);transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s;animation:cardFloat 7s ease-in-out infinite}
+.hs-card:nth-child(2n){animation-delay:-3.5s}
+.hs-card:hover{transform:translateY(-4px);box-shadow:0 22px 50px -24px rgba(1,31,82,.5)}
+.hs-num{font-family:var(--display);font-size:44px;line-height:1;color:rgba(168,132,31,.45)}
+.hs-type{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);margin-top:16px}
+.hs-name{font-family:var(--display);font-size:26px;font-weight:500;line-height:1.2;color:var(--accent-deep);margin-top:6px}
+.hs-addr{font-family:var(--serif);font-size:17px;font-weight:500;line-height:1.5;color:var(--ink-soft);margin-top:6px}
+.hs-dist{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--hair-gold);font-family:var(--sans);font-size:15px;color:var(--ink)}
+.hs-dist svg{width:18px;height:18px;flex-shrink:0;color:var(--gold)}
+.hs-dist strong{font-weight:600}
+.hs-dist span span{color:var(--ink-soft)}
+.hs-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hs-btn{display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:0 15px;border-radius:999px;border:1px solid var(--hair-gold);background:transparent;cursor:pointer;
+  font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);text-decoration:none;transition:background .3s,color .3s,border-color .3s}
+.hs-btn svg{width:14px;height:14px}
+.hs-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.hs-mapview{max-width:960px;margin:0 auto}
+.hs-mapview[hidden],.hs-list[hidden]{display:none!important}
+.hs-mapcard{position:relative;height:min(68svh,520px);border-radius:26px;overflow:hidden;border:1px solid rgba(212,175,55,.45);box-shadow:0 24px 60px -28px rgba(1,31,82,.6);background:#0d1626}
+.hs-map{position:absolute;inset:0;background:#0d1626}
+.hs-maphint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:500;pointer-events:none;white-space:nowrap;
+  padding:8px 16px;border-radius:999px;background:rgba(8,16,32,.82);backdrop-filter:blur(8px);color:#f3ecd2;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.04em}
+.hs-mini{list-style:none;display:grid;gap:10px;margin-top:16px}
+.hs-mini button{width:100%;display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:16px;border:1px solid var(--hair-gold);background:linear-gradient(180deg,#fffef6,var(--paper));cursor:pointer;text-align:left;transition:border-color .3s,transform .3s}
+.hs-mini button:hover,.hs-mini button.is-on{border-color:var(--gold);transform:translateX(3px)}
+.hs-mini b{display:block;font-family:var(--display);font-weight:500;font-size:18px;color:var(--accent-deep)}
+.hs-mini small{display:block;font-family:var(--sans);font-size:13px;color:var(--ink-soft);margin-top:2px}
+.hs-dot{flex-shrink:0;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--sans);font-size:13px;font-weight:600;box-shadow:0 0 0 2px rgba(212,175,55,.7)}
+/* marcadores */
+.hs-pin{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#24467f,#0b2557);color:#f6e7b0;
+  font-family:'Inter Tight',sans-serif;font-size:14px;font-weight:600;border:2px solid #e9cf7a;box-shadow:0 6px 16px rgba(0,0,0,.55);transition:transform .3s}
+.hs-pin.is-on{transform:scale(1.22);background:radial-gradient(circle at 35% 30%,#f5dc8a,#b8901f);color:#0b2557}
+.hs-venue{display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:auto}
+.hs-venue-tag{display:flex;align-items:center;gap:6px;white-space:nowrap;padding:7px 13px;border-radius:999px;background:#fbf6e2;color:#0b2557;font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;box-shadow:0 8px 20px rgba(0,0,0,.45)}
+.hs-venue-dot{width:14px;height:14px;border-radius:50%;background:#D4AF37;border:2px solid #fbf6e2;box-shadow:0 0 0 0 rgba(212,175,55,.7);animation:hsPulse 2s ease-out infinite}
+@keyframes hsPulse{0%{box-shadow:0 0 0 0 rgba(212,175,55,.75)}100%{box-shadow:0 0 0 16px rgba(212,175,55,0)}}
+.leaflet-popup-content-wrapper{border-radius:16px!important;background:#fbf6e2!important;box-shadow:0 14px 30px rgba(0,0,0,.4)!important}
+.leaflet-popup-tip{background:#fbf6e2!important}
+.leaflet-popup-content{margin:14px 18px!important;font-family:'Cormorant Garamond',serif;color:#011f52}
+.hs-pop b{display:block;font-family:'Playfair Display',serif;font-size:18px;font-weight:500}
+.hs-pop span{display:block;font-family:'Inter Tight',sans-serif;font-size:13px;margin:4px 0 8px;color:#4a5570}
+.hs-pop a{font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#012f7b}
+.leaflet-control-zoom a{background:#fbf6e2!important;color:#0b2557!important;border-color:rgba(0,0,0,.1)!important}
+.leaflet-control-attribution{background:rgba(8,16,32,.6)!important;color:#c9c3ad!important;font-size:9px!important}
+.leaflet-control-attribution a{color:#e9cf7a!important}
+
+/* ============ MENÚ ============ */
+.nv-progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:65;background:linear-gradient(90deg,#D4AF37,#fecb3e);transform-origin:left;transform:scaleX(0);opacity:0;transition:opacity .4s;pointer-events:none}
+body.nv-on .nv-progress{opacity:.85}
+.nv{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));z-index:66;display:flex;justify-content:center;padding:0 14px;pointer-events:none;
+  opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+body.nv-on .nv{opacity:1;transform:none}
+.nv-bar{pointer-events:auto;display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;border:1px solid rgba(212,175,55,.35);
+  background:rgba(254,252,239,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 18px 50px -20px rgba(1,31,82,.45)}
+.nv-home{height:44px;padding:0 14px;border:0;background:none;cursor:pointer;color:var(--accent-deep)}
+.nv-mono{display:inline-flex;align-items:center;font-family:var(--display);font-style:italic;font-size:24px;line-height:1;letter-spacing:-.04em}
+.nv-mono i{font-style:italic;color:var(--gold);font-size:.8em;margin:0 .06em;transform:translateY(.04em)}
+.nv-links{display:none;list-style:none;align-items:center}
+.nv-link{position:relative;isolation:isolate;padding:11px 14px;border:0;background:none;cursor:pointer;border-radius:999px;
+  font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-soft);transition:color .35s}
+.nv-link:hover,.nv-link.is-on{color:var(--accent-deep)}
+.nv-pill{position:absolute;inset:0;z-index:-1;border-radius:999px;background:rgba(1,47,123,.1);box-shadow:inset 0 0 0 1px rgba(212,175,55,.35);opacity:0;transform:scale(.85);transition:opacity .45s cubic-bezier(.22,1,.36,1),transform .45s cubic-bezier(.22,1,.36,1)}
+.nv-link.is-on .nv-pill{opacity:1;transform:none}
+.nv-sep{width:1px;height:24px;background:var(--hair-gold);margin:0 4px}
+.nv-icon{display:grid;place-items:center;width:44px;height:44px;border:0;background:none;border-radius:50%;cursor:pointer;color:var(--accent-deep);transition:color .3s,background .3s}
+.nv-icon:hover{color:var(--gold-deep);background:rgba(212,175,55,.12)}
+.nv-icon svg{width:18px;height:18px}
+.nv-menu{display:flex;align-items:center;gap:8px;height:44px;padding:0 18px 0 14px;border:0;border-radius:999px;cursor:pointer;background:var(--accent);color:#fefcdd;transition:transform .2s}
+.nv-menu:active{transform:scale(.95)}
+.nv-menu svg{width:18px;height:18px}
+.nv-menu span{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+@media (min-width:1100px){
+  .nv{bottom:auto;top:18px;transform:translateY(-24px)}
+  .nv-links{display:flex}
+  .nv-menu{display:none}
+}
+/* pantalla completa (móvil) */
+.nm{position:fixed;inset:0;z-index:75;display:flex;flex-direction:column;padding:max(26px,env(safe-area-inset-top)) 30px max(28px,env(safe-area-inset-bottom));
+  background:rgba(254,252,239,.95);backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);clip-path:circle(0% at 85% 95%)}
+.nm[hidden]{display:none}
+.nm-head{display:flex;align-items:center;justify-content:space-between}
+.nm-mono{font-size:34px;color:var(--accent-deep)}
+.nm-close{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid var(--hair-gold);background:none;cursor:pointer;color:var(--accent-deep)}
+.nm-close svg{width:18px;height:18px}
+.nm-list{list-style:none;margin:auto 0}
+.nm-link{display:flex;align-items:baseline;gap:16px;width:100%;padding:5px 0;border:0;background:none;cursor:pointer;text-align:left}
+.nm-n{width:24px;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.nm-t{font-family:var(--serif);font-weight:500;font-size:clamp(32px,9vw,46px);line-height:1.15;color:var(--accent-deep);transition:color .3s}
+.nm-link:hover .nm-t,.nm-link.is-on .nm-t{color:var(--gold-deep);font-style:italic}
+.nm-foot{text-align:center;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
+/* el tocadiscos se sube para no chocar con la barra en móvil */
+@media (max-width:1099px){ .vinyl-btn{bottom:86px!important} }
 </style>
 </head>
 <body>
@@ -1794,13 +1902,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   </div>
 </button>
 
+
+<!-- MENÚ (estilo valeyandres.love) -->
+<div class="nv-progress" id="nvProgress" aria-hidden="true"></div>
+<nav class="nv" id="nv" aria-label="Secciones">
+  <div class="nv-bar">
+    <button type="button" class="nv-home" data-go="inicio" aria-label="Ir al inicio"><span class="nv-mono" aria-hidden="true">J<i>&amp;</i>K</span></button>
+    <ul class="nv-links"><li><button type="button" class="nv-link" data-go="invitacion"><span class="nv-pill" aria-hidden="true"></span>Invitación</button></li><li><button type="button" class="nv-link" data-go="ubicacion"><span class="nv-pill" aria-hidden="true"></span>Ubicación</button></li><li><button type="button" class="nv-link" data-go="itinerario"><span class="nv-pill" aria-hidden="true"></span>Itinerario</button></li><li><button type="button" class="nv-link" data-go="vestimenta"><span class="nv-pill" aria-hidden="true"></span>Vestimenta</button></li><li><button type="button" class="nv-link" data-go="hospedaje"><span class="nv-pill" aria-hidden="true"></span>Hospedaje</button></li><li><button type="button" class="nv-link" data-go="galeria"><span class="nv-pill" aria-hidden="true"></span>Galería</button></li><li><button type="button" class="nv-link" data-go="regalos"><span class="nv-pill" aria-hidden="true"></span>Regalos</button></li><li><button type="button" class="nv-link" data-go="confirmar"><span class="nv-pill" aria-hidden="true"></span>Confirmar</button></li></ul>
+    <span class="nv-sep" aria-hidden="true"></span>
+    <button type="button" class="nv-icon" id="nvShare" aria-label="Compartir invitación"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98"/></svg></button>
+    <button type="button" class="nv-menu" id="nvOpen" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span>Menú</span></button>
+  </div>
+</nav>
+<div class="nm" id="nm" role="dialog" aria-modal="true" aria-label="Menú" hidden>
+  <div class="nm-head"><span class="nv-mono nm-mono" aria-hidden="true">J<i>&amp;</i>K</span><button type="button" class="nm-close" id="nmClose" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <ul class="nm-list"><li><button type="button" class="nm-link" data-go="inicio"><span class="nm-n">01</span><span class="nm-t">Inicio</span></button></li><li><button type="button" class="nm-link" data-go="invitacion"><span class="nm-n">02</span><span class="nm-t">Invitación</span></button></li><li><button type="button" class="nm-link" data-go="ubicacion"><span class="nm-n">03</span><span class="nm-t">Ubicación</span></button></li><li><button type="button" class="nm-link" data-go="itinerario"><span class="nm-n">04</span><span class="nm-t">Itinerario</span></button></li><li><button type="button" class="nm-link" data-go="vestimenta"><span class="nm-n">05</span><span class="nm-t">Vestimenta</span></button></li><li><button type="button" class="nm-link" data-go="hospedaje"><span class="nm-n">06</span><span class="nm-t">Hospedaje</span></button></li><li><button type="button" class="nm-link" data-go="galeria"><span class="nm-n">07</span><span class="nm-t">Galería</span></button></li><li><button type="button" class="nm-link" data-go="regalos"><span class="nm-n">08</span><span class="nm-t">Regalos</span></button></li><li><button type="button" class="nm-link" data-go="confirmar"><span class="nm-n">09</span><span class="nm-t">Confirmar</span></button></li></ul>
+  <p class="nm-foot">Sábado, 5 de diciembre de 2026 · Barranquilla</p>
+</div>
+
 <!-- PARTÍCULAS -->
 <div id="particles"></div>
 
 <div class="wrap">
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="inicio">
     <div class="hero-bg-wrap"><img class="hero-bg" src="hed.jpeg" alt="" loading="eager"></div>
     <div class="hero-bg-overlay"></div>
     <div class="hero-frame"></div>
@@ -1834,7 +1960,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:transparent;--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- VERSO -->
-  <section class="section-surface">
+  <section class="section-surface" id="invitacion">
     <div class="container">
       <div class="verse-wrap">
         <svg class="verse-ornament" viewBox="0 0 360 80" fill="none" aria-hidden="true">
@@ -1924,7 +2050,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:var(--surface);--to:var(--paper)" aria-hidden="true"></div>
 
   <!-- UBICACIONES -->
-  <section class="section-paper locs">
+  <section class="section-paper locs" id="ubicacion">
     <div class="container">
       <div style="text-align:center">
         <div class="eyebrow">Acompáñanos</div>
@@ -2006,7 +2132,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:var(--paper);--to:var(--paper)" aria-hidden="true"></div>
 
   <!-- ITINERARIO -->
-  <section class="section-paper itinerary">
+  <section class="section-paper itinerary" id="itinerario">
     <span class="mono-wm" aria-hidden="true">J &amp; K</span>
     <div class="container">
       <div class="eyebrow">El gran día</div>
@@ -2060,7 +2186,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:var(--paper);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- DRESS CODE -->
-  <section class="section-bg dress">
+  <section class="section-bg dress" id="vestimenta">
     <div class="container">
       <div class="eyebrow">Código de vestimenta</div>
       <h2>Formal <em>elegante</em></h2>
@@ -2161,72 +2287,84 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <!-- DIVIDER: paper → paper (hospedaje) -->
   <div class="seam" style="--from:var(--paper);--to:var(--paper)" aria-hidden="true"></div>
 
-  <!-- HOSPEDAJE -->
-  <section class="section-paper locs lodging">
+  <!-- HOSPEDAJE — lista / mapa (estilo valeyandres.love) -->
+  <section class="section-paper lodging hs" id="hospedaje">
     <div class="container">
       <div style="text-align:center">
-        <div class="eyebrow">Si vienes de fuera</div>
-        <h2>Hospedaje <em>recomendado</em></h2>
-        <div class="locs-sub">para que sólo te ocupes de disfrutar</div>
+        <div class="eyebrow">Sugerencia de hospedaje</div>
+        <h2>Quédate <em>en</em> Riomar</h2>
+        <p class="hs-intro">Tiempos aproximados en auto, sin tráfico. La ceremonia y la recepción son en el Crowne Plaza, a pocos minutos de cada hotel.</p>
       </div>
-      <div class="locs-grid">
-        <article class="loc-card" data-tilt>
-          <span class="washi washi--l"></span>
-          <span class="washi washi--r"></span>
-          <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-              <path d="M12 12 L17 17 M27 27 L32 32 M27 17 L32 12 M12 32 L17 27" opacity=".4"/>
-            </g>
-          </svg>
-          <svg class="rosette rosette--br" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-            </g>
-          </svg>
-          <div class="loc-type">Hotel</div>
-          <div class="loc-name">Crowne Plaza Barranquilla</div>
-          <div class="loc-time">Sede del evento</div>
-          <div class="loc-addr">Hospédate en el mismo hotel donde serán la ceremonia y la recepción</div>
-          <div class="loc-nav">
-            <span class="loc-nav-lbl">Cómo llegar</span>
-            <div class="loc-nav-links">
-              <a href="https://maps.app.goo.gl/wiVV4gcuzktEtuE7A?g_st=ic" target="_blank" rel="noopener">Google Maps</a>
-              <span aria-hidden="true">·</span>
-              <a href="https://maps.apple.com/?q=Crowne%20Plaza%20Barranquilla%2C%20Cra.%2057%20%2399A-65%2C%20Barranquilla" target="_blank" rel="noopener">Apple Maps</a>
-              <span aria-hidden="true">·</span>
-              <a href="https://waze.com/ul?q=Crowne%20Plaza%20Barranquilla%2C%20Cra.%2057%20%2399A-65%2C%20Barranquilla&amp;navigate=yes" target="_blank" rel="noopener">Waze</a>
-            </div>
+      <div class="hs-tabs-wrap">
+        <div class="hs-tabs" role="tablist" aria-label="Vista de hospedaje">
+          <span class="hs-tab-bg" aria-hidden="true"></span>
+          <button role="tab" type="button" class="hs-tab is-on" aria-selected="true" data-view="list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 5h.01M3 12h.01M3 19h.01M8 5h13M8 12h13M8 19h13"/></svg> Lista</button>
+          <button role="tab" type="button" class="hs-tab" aria-selected="false" data-view="map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15M9 3.236v15"/></svg> Mapa</button>
+        </div>
+      </div>
+      <ul class="hs-list" id="hsList">
+        <li class="hs-card">
+          <div class="hs-top"><span class="hs-num">01</span></div>
+          <p class="hs-type">Sede del evento</p>
+          <h3 class="hs-name">Crowne Plaza Barranquilla</h3>
+          <p class="hs-addr">Torre Norte · Cra. 57 #99A-65, Riomar, Barranquilla</p>
+          <div class="hs-dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><span><strong>Aquí mismo</strong> <span>ceremonia y recepción</span></span></div>
+          <div class="hs-actions">
+            <a class="hs-btn" href="https://maps.app.goo.gl/wiVV4gcuzktEtuE7A?g_st=ic" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Ver ubicación</a>
+            <button class="hs-btn hs-btn--map" type="button" data-hs="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15M9 3.236v15"/></svg> En el mapa</button>
           </div>
-        </article>
-        <article class="loc-card" data-tilt>
-          <span class="washi washi--l"></span>
-          <span class="washi washi--r"></span>
-          <svg class="rosette rosette--tl" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-              <path d="M12 12 L17 17 M27 27 L32 32 M27 17 L32 12 M12 32 L17 27" opacity=".4"/>
-            </g>
-          </svg>
-          <svg class="rosette rosette--br" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <g stroke="var(--gold)" stroke-width=".8" fill="none">
-              <circle cx="22" cy="22" r="6"/>
-              <circle cx="22" cy="22" r="14" opacity=".5"/>
-              <path d="M22 8 L22 16 M22 28 L22 36 M8 22 L16 22 M28 22 L36 22" opacity=".6"/>
-            </g>
-          </svg>
-          <div class="loc-type">Alternativa</div>
-          <div class="loc-name">Airbnb</div>
-          <div class="loc-time">Norte de Barranquilla</div>
-          <div class="loc-addr">Casas y apartamentos cerca de Riomar, ideales si viajan en grupo o familia</div>
-          <div class="loc-nav"><div class="loc-nav-links"><a href="https://www.airbnb.com.co/s/Barranquilla--Atl%C3%A1ntico/homes" target="_blank" rel="noopener">Ver opciones en Airbnb</a></div></div>
-        </article>
+        </li>
+        <li class="hs-card">
+          <div class="hs-top"><span class="hs-num">02</span></div>
+          <p class="hs-type">Hotel</p>
+          <h3 class="hs-name">Hilton Garden Inn</h3>
+          <p class="hs-addr">Carrera 53, Paseo de la Castellana, Riomar, Barranquilla</p>
+          <div class="hs-dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><span><strong>2 min</strong> <span>a la recepción · 0,6 km</span></span></div>
+          <div class="hs-actions">
+            <a class="hs-btn" href="https://www.google.com/maps/search/?api=1&query=Hilton%20Garden%20Inn%2C%20Barranquilla" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Ver ubicación</a>
+            <button class="hs-btn hs-btn--map" type="button" data-hs="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15M9 3.236v15"/></svg> En el mapa</button>
+          </div>
+        </li>
+        <li class="hs-card">
+          <div class="hs-top"><span class="hs-num">03</span></div>
+          <p class="hs-type">Hotel</p>
+          <h3 class="hs-name">Movich Buró 51</h3>
+          <p class="hs-addr">Calle 94 #51B-43, El Poblado, Riomar, Barranquilla</p>
+          <div class="hs-dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><span><strong>3 min</strong> <span>a la recepción · 1,0 km</span></span></div>
+          <div class="hs-actions">
+            <a class="hs-btn" href="https://www.google.com/maps/search/?api=1&query=Movich%20Bur%C3%B3%2051%2C%20Barranquilla" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Ver ubicación</a>
+            <button class="hs-btn hs-btn--map" type="button" data-hs="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15M9 3.236v15"/></svg> En el mapa</button>
+          </div>
+        </li>
+        <li class="hs-card">
+          <div class="hs-top"><span class="hs-num">04</span></div>
+          <p class="hs-type">Hotel</p>
+          <h3 class="hs-name">GHL Hotel Barranquilla</h3>
+          <p class="hs-addr">Calle 106 con Carrera 50, Villa Santos, Barranquilla</p>
+          <div class="hs-dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><span><strong>4 min</strong> <span>a la recepción · 1,4 km</span></span></div>
+          <div class="hs-actions">
+            <a class="hs-btn" href="https://www.google.com/maps/search/?api=1&query=GHL%20Hotel%20Barranquilla%2C%20Barranquilla" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Ver ubicación</a>
+            <button class="hs-btn hs-btn--map" type="button" data-hs="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15M9 3.236v15"/></svg> En el mapa</button>
+          </div>
+        </li>
+        <li class="hs-card">
+          <div class="hs-top"><span class="hs-num">05</span></div>
+          <p class="hs-type">Hotel</p>
+          <h3 class="hs-name">Hotel Estelar Alto Prado</h3>
+          <p class="hs-addr">Calle 76, Alto Prado, Barranquilla</p>
+          <div class="hs-dist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg><span><strong>10 min</strong> <span>a la recepción · 4,0 km</span></span></div>
+          <div class="hs-actions">
+            <a class="hs-btn" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Estelar%20Alto%20Prado%2C%20Barranquilla" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> Ver ubicación</a>
+            <button class="hs-btn hs-btn--map" type="button" data-hs="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15M9 3.236v15"/></svg> En el mapa</button>
+          </div>
+        </li>
+      </ul>
+      <div class="hs-mapview" id="hsMapView" hidden>
+        <div class="hs-mapcard">
+          <div class="hs-map" id="hsMap" role="region" aria-label="Mapa de hospedaje y sede"></div>
+          <div class="hs-maphint">Toca un número para ver el hotel</div>
+        </div>
+        <ul class="hs-mini"><li><button type="button" data-hs="0"><span class="hs-dot">1</span><span><b>Crowne Plaza Barranquilla</b><small>Sede · ceremonia y recepción</small></span></button></li><li><button type="button" data-hs="1"><span class="hs-dot">2</span><span><b>Hilton Garden Inn</b><small>2 min a la recepción</small></span></button></li><li><button type="button" data-hs="2"><span class="hs-dot">3</span><span><b>Movich Buró 51</b><small>3 min a la recepción</small></span></button></li><li><button type="button" data-hs="3"><span class="hs-dot">4</span><span><b>GHL Hotel Barranquilla</b><small>4 min a la recepción</small></span></button></li><li><button type="button" data-hs="4"><span class="hs-dot">5</span><span><b>Hotel Estelar Alto Prado</b><small>10 min a la recepción</small></span></button></li></ul>
       </div>
       <p class="lodging-note">Te sugerimos reservar con anticipación: diciembre es temporada alta en Barranquilla.</p>
     </div>
@@ -2236,7 +2374,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:var(--paper);--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- GALLERY — RUEDA DE LA FORTUNA -->
-  <section class="section-surface gallery">
+  <section class="section-surface gallery" id="galeria">
     <div class="container gallery-head">
       <div class="eyebrow">Momentos</div>
       <h2>Del camino <em>que</em> nos trajo aquí</h2>
@@ -2371,7 +2509,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="seam" style="--from:var(--bg);--to:var(--paper)" aria-hidden="true"></div>
 
   <!-- RSVP -->
-  <section class="section-paper rsvp-jen">
+  <section class="section-paper rsvp-jen" id="confirmar">
     <div class="rsvp-card-jen">
       <!-- Esquinas decorativas -->
       <svg class="rsvp-corner rsvp-corner--tl" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M2 50 L2 2 L50 2" stroke="var(--gold)" stroke-width=".9" opacity=".6"/><circle cx="2" cy="2" r="2.5" fill="var(--gold)" opacity=".5"/></svg>
@@ -2969,6 +3107,127 @@ gsap.fromTo('.dress-avoid',{opacity:0,y:24},{opacity:1,y:0,duration:1.1,ease:'po
     setTimeout(function(){ScrollTrigger.refresh()},900);
   });
   gsap.fromTo('.gifts-jen .eyebrow, .gifts-jen h2, .gift-lead',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.1,scrollTrigger:{trigger:'.gifts-jen',start:'top 78%'}});
+})();
+
+
+// ------ HOSPEDAJE — lista / mapa (Leaflet + CARTO oscuro, sin API key) ------
+(function(){
+  var sec=document.getElementById('hospedaje'); if(!sec) return;
+  var HOTELS=[{"name": "Crowne Plaza Barranquilla", "lat": 11.0165745, "lng": -74.827553, "min": 0, "km": 0, "url": "https://maps.app.goo.gl/wiVV4gcuzktEtuE7A?g_st=ic"}, {"name": "Hilton Garden Inn", "lat": 11.015948, "lng": -74.8315001, "min": 2, "km": 0.6, "url": "https://www.google.com/maps/search/?api=1&query=Hilton%20Garden%20Inn%2C%20Barranquilla"}, {"name": "Movich Buró 51", "lat": 11.0102684, "lng": -74.8255965, "min": 3, "km": 1.0, "url": "https://www.google.com/maps/search/?api=1&query=Movich%20Bur%C3%B3%2051%2C%20Barranquilla"}, {"name": "GHL Hotel Barranquilla", "lat": 11.0135052, "lng": -74.8367654, "min": 4, "km": 1.4, "url": "https://www.google.com/maps/search/?api=1&query=GHL%20Hotel%20Barranquilla%2C%20Barranquilla"}, {"name": "Hotel Estelar Alto Prado", "lat": 11.0051099, "lng": -74.8032705, "min": 10, "km": 4.0, "url": "https://www.google.com/maps/search/?api=1&query=Hotel%20Estelar%20Alto%20Prado%2C%20Barranquilla"}];
+  var tabs=sec.querySelector('.hs-tabs'), list=document.getElementById('hsList'), view=document.getElementById('hsMapView');
+  var map=null, markers=[], leafletLoading=null;
+  function loadLeaflet(){
+    if(window.L) return Promise.resolve();
+    if(leafletLoading) return leafletLoading;
+    leafletLoading=new Promise(function(res,rej){
+      var css=document.createElement('link'); css.rel='stylesheet'; css.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css'; document.head.appendChild(css);
+      var js=document.createElement('script'); js.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'; js.onload=res; js.onerror=rej; document.head.appendChild(js);
+    });
+    return leafletLoading;
+  }
+  function buildMap(){
+    map=L.map('hsMap',{maxZoom:16,zoomControl:true,attributionControl:true,scrollWheelZoom:false,tap:true});
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,
+      attribution:'Esri, HERE, Garmin, &copy; OpenStreetMap'}).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,opacity:.9}).addTo(map);
+    var b=[];
+    HOTELS.forEach(function(h,i){
+      var ll=[h.lat,h.lng]; b.push(ll);
+      var icon, m;
+      if(i===0){
+        icon=L.divIcon({className:'',iconSize:[160,52],iconAnchor:[80,46],
+          html:'<div class="hs-venue"><span class="hs-venue-tag">&#9679; Ceremonia y recepción</span><span class="hs-venue-dot"></span></div>'});
+      } else {
+        icon=L.divIcon({className:'',iconSize:[34,34],iconAnchor:[17,17],html:'<div class="hs-pin">'+(i+1)+'</div>'});
+      }
+      m=L.marker(ll,{icon:icon,zIndexOffset:i===0?1000:0}).addTo(map);
+      var sub=i===0?'Sede · ceremonia y recepción':(h.min+' min a la recepción · '+String(h.km).replace('.',',')+' km');
+      m.bindPopup('<div class="hs-pop"><b>'+h.name+'</b><span>'+sub+'</span><a href="'+h.url+'" target="_blank" rel="noopener">Ver ubicación &rarr;</a></div>',{closeButton:false,offset:[0,i===0?-40:-12]});
+      m.on('click',function(){ select(i,false); });
+      markers.push(m);
+    });
+    map.fitBounds(b,{padding:[50,50]});
+  }
+  function select(i,fly){
+    markers.forEach(function(m,j){ var el=m.getElement&&m.getElement(); var p=el&&el.querySelector('.hs-pin'); if(p) p.classList.toggle('is-on',j===i); });
+    sec.querySelectorAll('.hs-mini button').forEach(function(bt,j){ bt.classList.toggle('is-on',j===i); });
+    if(fly){ map.flyTo([HOTELS[i].lat,HOTELS[i].lng],15,{duration:.9}); setTimeout(function(){ markers[i].openPopup(); },950); }
+    else markers[i].openPopup();
+  }
+  function show(v){
+    var isMap=v==='map';
+    tabs.classList.toggle('is-map',isMap);
+    tabs.querySelectorAll('.hs-tab').forEach(function(t){ var on=t.dataset.view===v; t.classList.toggle('is-on',on); t.setAttribute('aria-selected',on?'true':'false'); });
+    var out=isMap?list:view, inn=isMap?view:list;
+    gsap.to(out,{opacity:0,y:12,duration:.25,ease:'power2.in',onComplete:function(){
+      out.hidden=true; inn.hidden=false;
+      gsap.fromTo(inn,{opacity:0,y:16},{opacity:1,y:0,duration:.5,ease:'power3.out'});
+      if(isMap){
+        loadLeaflet().then(function(){ if(!map) buildMap(); else map.invalidateSize(); setTimeout(function(){ map.invalidateSize(); },60); ScrollTrigger.refresh(); })
+          .catch(function(){ document.getElementById('hsMap').innerHTML='<p style="color:#f3ecd2;padding:30px;text-align:center">No se pudo cargar el mapa.</p>'; });
+      } else ScrollTrigger.refresh();
+    }});
+  }
+  tabs.querySelectorAll('.hs-tab').forEach(function(t){ t.addEventListener('click',function(){ show(t.dataset.view); }); });
+  sec.querySelectorAll('[data-hs]').forEach(function(bt){
+    bt.addEventListener('click',function(){
+      var i=+bt.dataset.hs;
+      if(view.hidden){ show('map'); var w=setInterval(function(){ if(map){ clearInterval(w); setTimeout(function(){ select(i,true); },400); } },100); }
+      else if(map) select(i,true);
+    });
+  });
+  gsap.fromTo('.hs .eyebrow, .hs h2, .hs-intro, .hs-tabs',{opacity:0,y:18},{opacity:1,y:0,duration:1,stagger:.08,scrollTrigger:{trigger:'.hs',start:'top 78%'}});
+  gsap.fromTo('.hs-card',{opacity:0,y:30},{opacity:1,y:0,duration:.9,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.hs-list',start:'top 85%'}});
+})();
+
+// ------ MENÚ (escritorio: píldora; móvil: barra + pantalla completa circular) ------
+(function(){
+  var nv=document.getElementById('nv'), nm=document.getElementById('nm'), openB=document.getElementById('nvOpen'), closeB=document.getElementById('nmClose');
+  var prog=document.getElementById('nvProgress');
+  if(!nv) return;
+  var IDS=['inicio','invitacion','ubicacion','itinerario','vestimenta','hospedaje','galeria','regalos','confirmar'];
+  function go(id){
+    var el=document.getElementById(id); if(!el) return;
+    var y=el.getBoundingClientRect().top+window.pageYOffset-(window.innerWidth>=1100?80:0);
+    window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+  }
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click',function(){ var id=b.dataset.go; if(!nm.hidden){ closeMenu(function(){ go(id); }); } else go(id); });
+  });
+  /* aparece cuando ya se abrió el sobre y pasaste la portada */
+  function onScroll(){
+    var wrapVisible=getComputedStyle(document.querySelector('.wrap')).visibility!=='hidden' && (!document.getElementById('envelope-screen') || document.getElementById('envelope-screen').style.display==='none');
+    document.body.classList.toggle('nv-on', wrapVisible && window.scrollY>window.innerHeight*.5);
+    var h=document.documentElement.scrollHeight-window.innerHeight; if(prog) prog.style.transform='scaleX('+(h>0?window.scrollY/h:0)+')';
+    var cur='inicio', mid=window.innerHeight*.4;
+    IDS.forEach(function(id){ var el=document.getElementById(id); if(el && el.getBoundingClientRect().top<=mid) cur=id; });
+    document.querySelectorAll('.nv-link,.nm-link').forEach(function(l){ l.classList.toggle('is-on',l.dataset.go===cur); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  /* menú móvil: se abre como círculo que crece desde el botón */
+  function origin(){ var r=openB.getBoundingClientRect(); return ((r.left+r.width/2)/innerWidth*100).toFixed(1)+'% '+((r.top+r.height/2)/innerHeight*100).toFixed(1)+'%'; }
+  function openMenu(){
+    var o=origin(); nm.hidden=false; openB.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden';
+    gsap.fromTo(nm,{clipPath:'circle(0% at '+o+')'},{clipPath:'circle(150% at '+o+')',duration:.75,ease:'power3.inOut'});
+    gsap.fromTo(nm.querySelectorAll('.nm-list li'),{opacity:0,y:28},{opacity:1,y:0,duration:.6,stagger:.05,ease:'power3.out',delay:.25});
+    gsap.fromTo(nm.querySelectorAll('.nm-head,.nm-foot'),{opacity:0},{opacity:1,duration:.5,delay:.35});
+  }
+  function closeMenu(cb){
+    var o=origin();
+    gsap.to(nm.querySelectorAll('.nm-list li'),{opacity:0,y:-12,duration:.25,stagger:.02,ease:'power2.in'});
+    gsap.to(nm,{clipPath:'circle(0% at '+o+')',duration:.55,ease:'power3.inOut',delay:.12,onComplete:function(){
+      nm.hidden=true; openB.setAttribute('aria-expanded','false'); document.body.style.overflow=''; if(cb) cb();
+    }});
+  }
+  openB.addEventListener('click',openMenu);
+  closeB.addEventListener('click',function(){ closeMenu(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !nm.hidden) closeMenu(); });
+  /* compartir */
+  document.getElementById('nvShare').addEventListener('click',function(){
+    var data={title:document.title,text:'Karen & Juan · 5 de diciembre de 2026',url:location.origin+'/'};
+    if(navigator.share){ navigator.share(data).catch(function(){}); }
+    else if(navigator.clipboard){ navigator.clipboard.writeText(data.url).then(function(){ var b=document.getElementById('nvShare'); b.style.color='var(--gold)'; setTimeout(function(){ b.style.color=''; },1200); }); }
+  });
 })();
 
 // ------ SOLO ADULTOS ------
